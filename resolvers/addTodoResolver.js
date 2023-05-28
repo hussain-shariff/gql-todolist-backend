@@ -1,7 +1,7 @@
 const todos = require('../models/todosSchema')
 
-const addTodoResolver = (parent, args) =>{
-    return todos.create({...args})
+const addTodoResolver = async (parent, args) =>{
+    return await todos.create({...args})
 }
 
 module.exports = addTodoResolver

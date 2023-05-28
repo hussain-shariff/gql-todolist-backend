@@ -1,7 +1,7 @@
 const todos = require("../models/todosSchema")
 
-const getTodoResolver = (parent, args) => {
-	return todos.findById(args.id)
+const getTodoResolver = async (parent, args) => {
+	return await todos.findById(args.id)
 }
 
 module.exports = getTodoResolver

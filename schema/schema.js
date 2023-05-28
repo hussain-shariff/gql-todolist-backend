@@ -11,6 +11,7 @@ const TodoType = require("../types/types")
 const getTodosResolver = require("../resolvers/getTodosResolver")
 const addTodoResolver = require("../resolvers/addTodoResolver")
 const deleteTodoResolver = require("../resolvers/deleteTodoResolver")
+const updateTodoResolver = require("../resolvers/updateTodoResolver")
 
 const RootQuery = new GraphQLObjectType({
 	name: "RootQueryType",
@@ -49,6 +50,15 @@ const mutation = new GraphQLObjectType({
 				id: { type: new GraphQLNonNull(GraphQLID) },
 			},
 			resolve: deleteTodoResolver,
+		},
+		updateTodo: {
+			type: TodoType,
+			args: {
+				id: { type: new GraphQLNonNull(GraphQLID) },
+				title: { type: GraphQLString },
+				completed: { type: GraphQLBoolean },
+			},
+			resolve: updateTodoResolver,
 		},
 	},
 })
